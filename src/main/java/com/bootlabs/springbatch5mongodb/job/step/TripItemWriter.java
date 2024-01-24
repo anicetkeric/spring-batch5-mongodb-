@@ -1,6 +1,6 @@
 package com.bootlabs.springbatch5mongodb.job.step;
 
-import com.bootlabs.springbatch5mongodb.domain.TripCsvLine;
+import com.bootlabs.springbatch5mongodb.domain.model.TripCsvLine;
 import com.bootlabs.springbatch5mongodb.domain.enums.ExecutionContextKey;
 import com.bootlabs.springbatch5mongodb.domain.enums.JobParametersKey;
 import lombok.NonNull;

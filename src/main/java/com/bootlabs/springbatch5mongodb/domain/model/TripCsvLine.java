@@ -1,4 +1,4 @@
-package com.bootlabs.springbatch5mongodb.domain;
+package com.bootlabs.springbatch5mongodb.domain.model;
 
 public record TripCsvLine(
         Integer bikeId,

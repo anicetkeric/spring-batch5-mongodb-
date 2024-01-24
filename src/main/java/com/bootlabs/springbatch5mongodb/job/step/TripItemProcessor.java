@@ -1,6 +1,6 @@
 package com.bootlabs.springbatch5mongodb.job.step;
 
-import com.bootlabs.springbatch5mongodb.domain.TripCsvLine;
+import com.bootlabs.springbatch5mongodb.domain.model.TripCsvLine;
 import com.bootlabs.springbatch5mongodb.domain.document.Trips;
 import com.bootlabs.springbatch5mongodb.domain.enums.UserGender;
 import lombok.extern.slf4j.Slf4j;
