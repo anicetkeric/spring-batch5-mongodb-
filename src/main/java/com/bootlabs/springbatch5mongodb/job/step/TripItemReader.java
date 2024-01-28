@@ -35,6 +35,7 @@ public class TripItemReader extends MongoCursorItemReader<Trips> {
         Criteria criteria = Criteria.where("birth year").ne("").and("usertype").is("Subscriber").and("tripduration").gt(500);
         BasicQuery query = new BasicQuery("{ $expr: {'$ne': ['$start station name', '$end station name']}}");
         query.addCriteria(criteria);
+
         setName("reader");
         setTargetType(Trips.class);
         setTemplate(mongoTemplate);

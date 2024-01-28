@@ -11,6 +11,9 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 
 import java.text.MessageFormat;
 
+/**
+ * @author aek
+ */
 @Configuration
 public class MongodbConfig {
     private final MongodbProperties mongodbProperties;

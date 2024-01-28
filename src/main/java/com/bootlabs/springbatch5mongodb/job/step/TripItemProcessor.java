@@ -16,7 +16,7 @@ public class TripItemProcessor implements ItemProcessor<Trips, TripCsvLine> {
 
 
 	@Override
-	public TripCsvLine process(Trips item) throws Exception {
+	public TripCsvLine process(Trips item) {
 		//LOGGER.info("Trips processor {}", item.toString());
 
 		var age = LocalDate.now().getYear() - item.getBirthYear();

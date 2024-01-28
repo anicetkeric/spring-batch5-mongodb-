@@ -98,6 +98,4 @@ public class TripItemWriter implements ItemWriter<TripCsvLine>, StepExecutionLis
             }
         }
     }
-
-
 }
