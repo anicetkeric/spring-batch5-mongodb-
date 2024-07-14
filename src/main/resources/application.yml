@@ -11,23 +11,31 @@ spring:
   #disabled job run at startup
   batch:
     job:
-      enabled: false
+      enabled: true
     jdbc:
       initialize-schema: never
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: <<database_name>>
-      username: <<database_username>>
-      password: <<database_password>>
-      auto-index-creation: false
-
-batch:
-   csv-path-directory: <<directory_path>>
+      uri: mongodb+srv://${MONGODB_LOGIN}:${MONGODB_PWD}@${MONGODB_URL}/${MONGODB_DATABASE}?${MONGODB_OPTS}
+      database: ${MONGODB_DATABASE}
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 1000
+          writetimeout: 5000
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+    protocol: smtp
 
 # Enable Logging mongo queries
 logging:
   level:
     org.springframework.data.mongodb.core.MongoTemplate: DEBUG
-

@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -40,24 +41,24 @@ public class JobConfig {
 
     @Bean
     public Job tripJob(JobRepository jobRepository, PlatformTransactionManager transactionManager,
-                       MongoTemplate mongoTemplate) {
+                       MongoTemplate mongoTemplate, JavaMailSender javaMailSender) {
         return new JobBuilder("tripJob", jobRepository)
                 .incrementer(new RunIdIncrementer())
-                .start(tripJobStep(jobRepository, transactionManager, mongoTemplate))
+                .start(tripJobStep(jobRepository, transactionManager, mongoTemplate, javaMailSender))
                 .listener(new TripJobCompletionListener())
                 .build();
     }
 
     @Bean
     public Step tripJobStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
-                            MongoTemplate mongoTemplate) {
+                            MongoTemplate mongoTemplate, JavaMailSender javaMailSender) {
         return new StepBuilder("tripJobCSVGenerator", jobRepository)
                 .startLimit(DEFAULT_LIMIT_SIZE)
                 .<Trips, TripCsvLine>chunk(DEFAULT_CHUNK_SIZE, transactionManager)
 
                 .reader(new TripItemReader(mongoTemplate))
                 .processor(new TripItemProcessor())
-                .writer(new TripItemWriter())
+                .writer(new TripItemWriter(javaMailSender))
                 .listener(new TripStepListener())
                 .build();
     }

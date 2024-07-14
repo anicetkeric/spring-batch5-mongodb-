@@ -20,4 +20,8 @@ import java.text.SimpleDateFormat;
     public static final int DEFAULT_LIMIT_SIZE = 500;
     public static final int DEFAULT_CHUNK_SIZE = 500;
     public static final String CSV_BASE_NAME = "citibike_extract";
+
+    public static final String MAIL_SUBJECT = "Citibike extraction Report - ";
+    public static final String MAIL_RECIPIENT = "bootlabs@gmail.com";
+    public static final String MAIL_FROM = "springk8slabs@gmail.com";
 }
