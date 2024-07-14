@@ -22,6 +22,10 @@ Clone the project
   git clone https://github.com/anicetkeric/spring-batch5-mongodb.git -b jobs-cronjobs-k8s
 ```  
 
+MongoDB training collections
+
+https://www.mongodb.com/docs/atlas/sample-data/sample-training/
+
 ## Documentation
 
 [Medium Story Part 1](https://boottechnologies-ci.medium.com/spring-batch-5-read-from-mongodb-and-generate-csv-files-part-1-b6f35f6338ee)
